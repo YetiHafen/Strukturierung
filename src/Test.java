@@ -5,11 +5,14 @@ import java.util.Arrays;
 
 public class Test {
     public static void main(String[] args) {
-        hackOutput();
 
-
-
-        System.out.println("38.1b.14.14.11.54.60.29.11.e.14.1c");
+        for(int i = 0; i < 10; i++) {
+            for(int j = 0; j < 10; j++) {
+                System.out.println("J: " + j);
+                if(j == 5) break;
+            }
+            System.out.println("I: " + i);
+        }
 
     }
 
