@@ -6,10 +6,14 @@ import java.util.Map;
 public class ES02_Zahlenraetsel {
 
     public static void main(String[] args) {
+        long start = System.currentTimeMillis();
         System.out.println(findValues());
+        double secondsTaken = (System.currentTimeMillis() - (double) start) / 1000;
+        System.out.printf("In %.3f Seconds%n", secondsTaken);
     }
 
     private static Map<Character, Integer> findValues() {
+
         for(int a = 0; a < 10; a++) {
             System.out.println(10 - a);
             for(int b = 0; b < 10; b++) {
