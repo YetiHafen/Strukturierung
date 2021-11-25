@@ -1,61 +1,82 @@
 package u07_ergaenzungenSchleife;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ES02_Zahlenraetsel_multi {
 
     static Thread[] threads;
-    static int[] starts;
-    static int singleThreadRuns;
+    static long[] starts;
+    static long singleThreadRuns;
     static boolean valueFound = false;
+    static long startTime;
 
     public static void main(String[] args) {
-        int threadCount = 4;
+        startTime = System.currentTimeMillis();
+        int threadCount = 22;
 
-        singleThreadRuns = (int) (9999999999L / threadCount + 1);
-        starts = new int[threadCount];
+        singleThreadRuns = 9999999999L / threadCount + 1;
+        starts = new long[threadCount];
         ES02_Zahlenraetsel_multi.threads = new Thread[threadCount];
 
-        for(int i = 0; i < threadCount; i++) {
-            starts[i] = i + singleThreadRuns;
+        starts[0] = 0;
+        for(int i = 1; i < threadCount; i++) {
+            starts[i] = singleThreadRuns + starts[i - 1];
         }
 
+        System.out.println(singleThreadRuns);
+        System.out.println(Arrays.toString(starts));
+
         for(int i = 0; i < threadCount; i++) {
-            int start = starts[i];
+            long start = starts[i];
+            int finalI = i;
             threads[i] = new Thread(() -> {
+                System.out.println("Start Thread " + finalI);
                 Map<Character, Integer> res = findValues(start);
                 if(res != null) {
                     valueFound = true;
-                    System.out.println(res);
+                    finished(res);
                 }
-            });
+                System.out.println("Ended Thread " + finalI);
+            }, "Thread " + finalI);
             threads[i].start();
         }
     }
 
+    private static void finished(Map<Character, Integer> result) {
+        System.out.println(result);
+        double secondsTaken = (System.currentTimeMillis() - (double) startTime) / 1000;
+        System.out.printf("In %.3f Seconds%n", secondsTaken);
+        System.exit(0);
+    }
 
-    private static Map<Character, Integer> findValues(int start) {
-        for(int iter = start; iter < start + singleThreadRuns && !valueFound; iter++) {
-            int j = iter % 10;
-            iter /= 10;
-            int i = iter % 10;
-            iter /= 10;
-            int h = iter % 10;
-            iter /= 10;
-            int g = iter % 10;
-            iter /= 10;
-            int f = iter % 10;
-            iter /= 10;
-            int e = iter % 10;
-            iter /= 10;
-            int d = iter % 10;
-            iter /= 10;
-            int c = iter % 10;
-            iter /= 10;
-            int b = iter % 10;
-            iter /= 10;
-            int a = iter % 10;
+
+    private static Map<Character, Integer> findValues(long start) {
+        for(long iter = start; iter < start + singleThreadRuns && !valueFound; iter++) {
+            /*if(iter % 100000000 == 0)  {
+                System.out.println(Thread.currentThread().getName() + ": at " + iter);
+            }*/
+            long current = iter;
+            int j = (int) (current % 10);
+            current /= 10;
+            int i = (int) (current % 10);
+            current /= 10;
+            int h = (int) (current % 10);
+            current /= 10;
+            int g = (int) (current % 10);
+            current /= 10;
+            int f = (int) (current % 10);
+            current /= 10;
+            int e = (int) (current % 10);
+            current /= 10;
+            int d = (int) (current % 10);
+            current /= 10;
+            int c = (int) (current % 10);
+            current /= 10;
+            int b = (int) (current % 10);
+            current /= 10;
+            int a = (int) (current % 10);
 
             int[][] zahlen = new int[3][3];
 
