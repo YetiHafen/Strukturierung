@@ -1,4 +1,4 @@
-package u05_whileSchleife;
+package u05_0_whileSchleife;
 
 import util.Zufall;
 

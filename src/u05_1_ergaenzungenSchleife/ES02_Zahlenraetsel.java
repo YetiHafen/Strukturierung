@@ -1,4 +1,4 @@
-package u07_ergaenzungenSchleife;
+package u05_1_ergaenzungenSchleife;
 
 import java.util.HashMap;
 import java.util.Map;
