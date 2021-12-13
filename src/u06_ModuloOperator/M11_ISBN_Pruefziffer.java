@@ -8,6 +8,7 @@ public class M11_ISBN_Pruefziffer {
         long isbn = Eingabe.readLong("ISBN: ");
 
 //        hä? hab ich die Aufgabe/ISBN nicht verstanden oder macht die Aufgabe keinen Sinn?
+//        10 min später: nach einger Recherche habe ich beschlossen, dass die Aufgabe keinen Sinn macht.
 
 //        int faktor = 10;
 //        int summe = 0;
