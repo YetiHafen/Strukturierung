@@ -6,7 +6,6 @@ public class M08_EinstelligeQuersumme {
 
     public static void main(String[] args) {
         int eingabe = Eingabe.readInt("Zahl: ");
-        int einstelligeSumme = 0;
         int zwischensumme;
 
         do {
@@ -15,10 +14,10 @@ public class M08_EinstelligeQuersumme {
                 zwischensumme += eingabe % 10;
                 eingabe /= 10;
             }
-            einstelligeSumme += zwischensumme;
+            eingabe = zwischensumme;
 
         } while (zwischensumme >= 10);
 
-        System.out.println(einstelligeSumme);
+        System.out.println(zwischensumme);
     }
 }
