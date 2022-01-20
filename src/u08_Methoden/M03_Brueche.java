@@ -13,6 +13,8 @@ public class M03_Brueche {
         System.out.println(z + "/" + n);
     }
 
+    // ich bin nicht für die Gestaltung dieser Funktion verantwortlich
+    // die Gestaltung war in der Aufgabe bereits exakt so vorgegeben
     public static int ggt(int a, int b) {
         if(b != 0) {
             do {

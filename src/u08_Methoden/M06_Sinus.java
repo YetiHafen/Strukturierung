@@ -4,6 +4,8 @@ import util.Eingabe;
 
 public class M06_Sinus {
 
+    private static final int GLIEDER = 10;
+
     public static void main(String[] args) {
         double x = Eingabe.readDouble("Zahl: ");
         System.out.println("sin(" + x + ") = " + sin(x));
@@ -14,9 +16,16 @@ public class M06_Sinus {
     public static double sin(double x) {
         double res = x;
 
-        res -= Math.pow(x, 3) / M04_Fakultaet.fakultaet(3);
-        res += Math.pow(x, 5) / M04_Fakultaet.fakultaet(5);
-        res -= Math.pow(x, 7) / M04_Fakultaet.fakultaet(7);
+        boolean plus = false;
+
+        for(int i = 1; i < GLIEDER * 2; i += 2) {
+            if(plus)
+                res += Math.pow(x, i) / M04_Fakultaet.fakultaet(i);
+            else
+                res -= Math.pow(x, i) / M04_Fakultaet.fakultaet(i);
+            plus = !plus;
+        }
+
         return res;
     }
 }
